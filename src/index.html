@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <title>21 - Scroll base animation</title>
+</head>
+<body>
+    <canvas class="webgl"></canvas>
+    <header class="header">
+        <a href="#" class="logo">YOGA</a>
+
+        <input type="checkbox" id="check">
+        <label class="icons">
+            <i class='bx bx-menu' id="menu-open"></i>
+            <i class='bx bx-x' id="menu-close"></i>
+        </label>
+
+        
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">About Me</a>
+            <a href="#">Project</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="section-container">
+        <section class="section title">
+            <div class="title">  
+                <h1>Hello,</h1>
+                <h6>I am Creative Developer</h6>
+            </div>
+        </section>
+        <section class="section">
+        <div class="container-flex">
+            <div class="wrapper">
+                <img src="../static/cartoon.png" id="myImg">
+                <div class="text-box">
+                    <h2>About Me</h2>
+                    <hr>
+                    <p>Hello! I'm Yoga, a passionate and creative individual with a love for all things web development and design. With a strong foundation in coding and a keen eye for aesthetics, I strive to create visually appealing and user-friendly websites that leave a lasting impression.
+
+                        My journey into the world of web development started after I bought my own laptop at 2017. Since then, I have been on an exciting adventure of continuous learning and improvement. I'm a firm believer in the power of technology to transform ideas into reality, and I'm dedicated to staying up-to-date with the latest trends and technologies in the field.
+                        
+                        When I'm not crafting digital experiences, you'll likely find me at the fitnes center. I believe that a well-rounded perspective fuels creativity, and I draw inspiration from a variety of sources.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <h2>Skill Set</h2>
+                <hr>
+                <div class="skill-sets">
+                    <a href="#" class="engineer-link bold" data-skill="engineer">Programming</a>
+                    <a href="#" class="digital-arts-link" data-skill="arts">Arts & Design</a>
+                    <a href="#" class="mentor-link" data-skill="mentor">Soft-Skills</a>
+                </div>
+                <div class="skill-set">
+                    <ul>
+                        <li>HTML/CSS/JS</li>
+                        <li>NodeJs</li>
+                        <li>ThreeJS</li>
+                        <li>React</li>
+                        <li>C#</li>
+                    </ul>
+                    <div class="icon-skill-1">
+                        <i class="fa-brands fa-node-js"></i>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <i class="fa-brands fa-js"></i>
+                        <i class="fa-brands fa-react"></i>
+                        <i class="fa-brands fa-unity"></i>
+                    </div>
+                    <div class="icon-skill-2 displayNone">
+                        <img src="../static/icons/adobe.png" alt="">
+                        <img src="../static/icons/aseprite.png" alt="">
+                        <img src="../static/icons/blender.png" alt="">
+                        <img src="../static/icons/figma.png" alt="">
+                    </div>  
+                    <div class="icon-skill-3 displayNone">
+                        <img src="../static/icons/teach.png" alt="">
+                        <img src="../static/icons/leader.png" alt="">
+                        <img src="../static/icons/learn.png" alt="">
+                        <img src="../static/icons/problem.png" alt="">
+                    </div>  
+                </div>
+            </div>
+        </div>  
+    </section>
+        <section class="section">
+                <h2 class="title">My Projects</h2>
+                <div class="sroll">
+                    <div class="card-container">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80" alt="">
+                            <div class="card-conten">
+                                <h3>Title one</h3>
+                                <p>Lorem ipsum dolor sit, officiis, accusantium in omnis molestiae libero explicabo at corrupti tempora tenetur, eligendi voluptatum? Culpa!</p>
+                                <a href="" class="card-button">See More</a>
+                            </div>
+                        </div>
+                            <div class="card">
+                                <img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80" alt="">
+                                <div class="card-conten">
+                                    <h3>Title one</h3>
+                                    <p>Lorem ipsum dolor sit, accusantium in omnis molestiae libero explicabo at corrupti tempora tenetur, eligendi voluptatum? Culpa!</p>
+                                    <a href="" class="card-button">See More</a>
+                                </div>
+                            </div>
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80" alt="">
+                            <div class="card-conten">
+                                <h3>Title one</h3>
+                                <p>Lorem ipsum dolor sit, in omnis molestiae libero explicabo at corrupti tempora tenetur, eligendi voluptatum? Culpa!</p>
+                                <a href="" class="card-button">See More</a>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+        </section>
+    </section>
+    <section class="footer">
+       <div class="footer-container">
+            <div class="leftfoot">
+                <h2>Get in Touch</h2>
+                <form action="https://formspree.io/f/xzblrwnw" method="POST">
+                    <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
+                    <input type="text" name="last" placeholder="Last Name" autocomplete="off" required>
+                    <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
+                    <textarea name="messege" cols="60" rows="5" placeholder="Enter text" autocomplete="off" required></textarea>
+                    <button type="submit" >Send Messege</button>
+                </form>
+            </div>
+           <div class="rightfoot">
+            <div class="socialIcons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="footernav">
+                <a href="#">Download CV</a>
+            </div>
+           </div>
+       </div>
+    </section>
+    <div class="footerBottom">
+        <p>Copyright &copy; 2023, Design by <span class="myName">Yoga Adi S.</span></p>
+    </div>
+   
+  
+</body>
+</html>

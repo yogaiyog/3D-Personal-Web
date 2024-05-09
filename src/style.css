@@ -363,7 +363,7 @@ hr {
     height: 400px;
     background-color: #ffeded;
     border-radius: 10px;
-    box-shadow: 5px 2px 20px 12px lightblue;
+    box-shadow: 1px 1px 10px 12px lightblue;
     overflow: hidden;
     transition: transform 0.6s ease;
     margin: auto;

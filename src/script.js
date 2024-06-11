@@ -4,6 +4,26 @@ import * as dat from 'lil-gui'
 import gsap from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+const loadingScreen = document.getElementById('loadingScreen');
+const loadingManager = new THREE.LoadingManager(
+    // Called when all assets are loaded
+    () => {
+        gsap.to(loadingScreen, { opacity: 0, duration: 1, onComplete: () => {
+            loadingScreen.style.display = 'none';
+        }});
+    },
+    // Called when an asset starts loading
+    (itemUrl, itemsLoaded, itemsTotal) => {
+        console.log(`Loading asset: ${itemUrl}. Loaded ${itemsLoaded} of ${itemsTotal} files.`);
+    },
+    // Called when an asset fails to load
+    (url) => {
+        console.error(`There was an error loading ${url}`);
+    }
+);
+
+
+
 const artsLink = document.querySelector('.digital-arts-link');
 const engineerLink = document.querySelector('.engineer-link');
 const mentorLink = document.querySelector('.mentor-link');
@@ -36,11 +56,11 @@ artsLink.addEventListener('click', function (event) {
     gsap.to(icon3, { opacity: 0, duration: 0.5 });
     setTimeout(() => {
         skillsList.innerHTML = `
-            <li>3D Modeling</li>
-            <li>Character Design</li>
-            <li>Animation</li>
-            <li>UX/UI</li>
-            <li>Pixel Arts</li>
+            <li>ExpressJs</li>
+            <li>Flask</li>
+            <li>NextJS</li>
+            <li>DataBase</li>
+            <li>RestApi</li>
         `;
         skillsList.classList.remove('fade-out');
     }, 300); // Set delay time (in milliseconds)
@@ -60,11 +80,11 @@ engineerLink.addEventListener('click', function (event) {
     gsap.to(icon3, { opacity: 0, duration: 0.5 });
     setTimeout(() => {
         skillsList.innerHTML = `
-            <li>HTML/CSS/JS</li>
-            <li>NodeJs</li>
+            <li>HTML/CSS</li>
+            <li>Javascript</li>
             <li>ThreeJS</li>
             <li>React</li>
-            <li>C#</li>
+            <li>Bootstrap</li>
         `;
         skillsList.classList.remove('fade-out');
     }, 300);
@@ -84,11 +104,11 @@ mentorLink.addEventListener('click', function (event) {
     gsap.to(icon2, { opacity: 0, duration: 0.5 });
     setTimeout(() => {
         skillsList.innerHTML = `
+            <li>Game-Dev</li>
+            <li>3D Modeling</li>
+            <li>Animation</li>
+            <li>Design</li>
             <li>Teaching</li>
-            <li>Guidance</li>
-            <li>Communication</li>
-            <li>Leadership</li>
-            <li>Problem Solving</li>
         `;
         skillsList.classList.remove('fade-out');
     }, 300);
@@ -98,9 +118,9 @@ mentorLink.addEventListener('click', function (event) {
 /**
  * Loaders
  */
-const textureLoader = new THREE.TextureLoader()
+const textureLoader = new THREE.TextureLoader(loadingManager)
 
-const gltfLoader = new GLTFLoader()
+const gltfLoader = new GLTFLoader(loadingManager)
 let mixer;
 let gltfModel;
 gltfLoader.load(
@@ -130,19 +150,6 @@ const parameters = {
     materialColor: '#ffeded'
 }
 
-// gui
-//     .addColor(parameters, 'materialColor')
-//     .onChange(()=>
-//     {
-//        material.color.set(parameters.materialColor)
-       
-//     })
-
-/**
- * Base
- */
-
-// Canvas
 const canvas = document.querySelector('canvas.webgl')
 
 // Scene

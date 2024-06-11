@@ -7,6 +7,15 @@
 }
 
 
+element.style {
+    min-width: 300px;
+    height: 1013px;
+}
+
+canvas {
+    min-width: 400px;
+}
+
 body{
     background: linear-gradient(to bottom, #163C52 0%,#4F4F47 30%,#163C52 60%,#163C52 80%, #2F1107 100%); 
 }
@@ -384,30 +393,24 @@ hr {
 }
 .loading-screen {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 9999;
+    align-items: center;
+    font-size: 1.5em;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
 }
 /* BREAKPOINTS */
 @media (max-width: 1560px) {
-    .container-flex {
-        height: auto;
-        background: #163C52;
-    }
 
-
-    .sroll {
-        overflow-y: hidden;
-        padding-top: 25px;
-        margin: auto;
-    }
 
 
     .wrapper {
@@ -477,10 +480,6 @@ hr {
         display: block;
     }
 
-    
-
-
-  
 }
 
 
@@ -589,13 +588,11 @@ img {vertical-align: middle;}
   .prev, .next,.text {font-size: 11px}
 }
 
-.my-project {
-    justify-content: space-between;
-}
+
 
 .carousel {
     width: 65vh;
-    height: 80vh;
+    min-height: 80vh;
     border: 3px solid #82d0f1;
     background-color: rgba(41, 86, 112, 0.95);
     box-shadow:1rem 1rem 1rem 1rem rgba(94, 30, 0, 0.1);
@@ -670,68 +667,6 @@ img {vertical-align: middle;}
     color: #48c8ff;
 }
 
-@media (max-width: 768px) {
-
-    .carousel {
-        width: 100%;
-        height: auto;
-        border: 3px solid #82d0f1;
-        background-color: rgba(41, 86, 112, 0.95);
-        box-shadow:1rem 1rem 1rem 1rem rgba(94, 30, 0, 0.1);
-        padding: 50px;
-        
-    }
-    .carousel .flex {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: space-evenly;
-        height: 100%;
-    }
-    
-    .section:not(:first-child) {
-        height: auto;
-    }
-    #me {
-        height: auto;
-       background: none;
-       border: none;
-       padding: 0;
-
-    }
-    .img {
-        display: block;
-        margin: auto;
-        width: 80%;
-    }
-    .container-flex {
-        width: 100%;
-        margin: auto;
-        padding: 0%;
-        
-        
-    }
-    .wrapper {
-        margin: 0%;
-        padding: 0;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        color: white;
-    }
-    .img {
-        display: block;
-        margin: auto;
-        width: auto;
-    }
-    .text-box {
-        color: white;
-    }
-    .wrapper a {
-        color: white;
-    }
-
-}
 
 @media (max-width: 1250px) {
 
@@ -766,9 +701,95 @@ img {vertical-align: middle;}
         height: 100vh;
         
         height: auto;
-        padding: 50px;
+        /* padding: 50px; */
     }
 
+
 }
+
+
+
+
+
+@media (max-width: 768px) {
+    #me, #project {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        border: none;
+        background: none;
+        margin-bottom: 50px
+    };
+    .container-flex {
+        margin: 0;
+        width: 12%;
+        padding: 20px 0;
+    }
+
+    .wrapper {
+        margin: 0;
+        padding: 20px 0;
+        width: 100%;
+    }
+    .img img {
+        display: block;
+        width: 50%;
+        margin-left: 10px;
+
+    }
+    .text-box{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .text-box p,.text-box h2, .text-box a  {
+        font-size: 0.8rem;
+    }
+    .skill a , .skill li {
+        font-size: small;
+    }
+
+     /* carousel poject */
+
+    .carousel {
+        width: 100%;
+        height: auto;
+    }
+    /* footer */
+
+    
+.leftfoot input {
+  width: 90%;
+}
+.leftfoot textarea {
+    width: 90%; 
+}
+
+
+}
+
+
+#rotateCameraButton {
+	box-shadow: 0px 1px 17px 0px #12687d;
+    position: absolute;
+    right: 20px;
+    top:100px;
+    margin: auto;
+	background-color:#82d0f1;
+	border-radius:10px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#474747;
+	font-size:0.5rem;
+    font-weight: 600;
+	padding:5px;
+	text-decoration:none;
+}
+#rotateCameraButton:hover {
+	background-color:#f18282;
+}
+
+        
 
 /*# sourceMappingURL=main.css.map*/

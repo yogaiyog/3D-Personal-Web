@@ -11,8 +11,12 @@
     
     <title>21 - Scroll base animation</title>
 </head>
-<body>
-    <div id="loadingScreen" class="loading-screen">Loading...</div>
+<body style="margin: 0; padding:0">
+    <div id="loadingScreen" class="loading-screen">
+        <h1>Loading<span id="loadingDots"></span>  </h1>
+        <br>
+        Use Desktop for best experience
+    </div>
     <canvas class="webgl"></canvas>
     <header class="header">
         <a href="#" class="logo">YOGA</a>
@@ -31,11 +35,12 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-    <div class="section-container" >
+    <div class="section-container "style="margin: 0; padding:0" >
         <section class="section title"id="Home">
             <div class="title">  
                 <h1>Hello,</h1>
-                <h6>I am a Programer</h6>
+                <h6>I am a Software Engineer</h6>
+                <button id="rotateCameraButton">Rotate Camera</button>
             </div>
         </section>
         <section class="section"id="me">
@@ -48,14 +53,13 @@
                 <div class="text-box">
                     <h2>About Me</h2>
                     <hr>
-                    <p>Hello! I'm Yoga, a passionate and creative individual with a love for all things web development and design. With a strong foundation in coding and a keen eye for aesthetics, I strive to create visually appealing and user-friendly websites that leave a lasting impression.
-
-                        My journey into the world of web development started after I bought my own laptop at 2017. Since then, I have been on an exciting adventure of continuous learning and improvement. I'm a firm believer in the power of technology to transform ideas into reality, and I'm dedicated to staying up-to-date with the latest trends and technologies in the field.
+                    <p>Hello! I'm Yoga, a passionate and creative individual with a love for all things Software Engineering and design. With a strong foundation in coding and a keen eye for aesthetics, I strive to create visually appealing, and user-friendly websites that leave a lasting impression.
+                        I'm dedicated to staying up-to-date with the latest trends and technologies in the field.
                         
                         When I'm not crafting digital experiences, you'll likely find me at the fitnes center. I believe that a well-rounded perspective fuels creativity, and I draw inspiration from a variety of sources.</p>
                 </div>
             </div>
-            <div class="wrapper">
+            <div class="wrapper skill">
                 <h2>Skill Set</h2>
                 <hr>
                 <div class="skill-sets">
@@ -95,12 +99,9 @@
             </div>
         </div>  
     </section>
-        <section class="section my-project" id="project">
+        <section class="section " id="project" >
                 <h2 class="title" >My Projects</h2>
-                <div class="sroll">
-                    <div class="card-container">
                         <div class="slideshow-container">
-
                             <div class="mySlides fade">
                               <div class="carousel">
                                 <div class="flex">
@@ -184,9 +185,6 @@
                             <a class="next" onclick="plusSlides(1)">❯</a>
                             
                         </div>
-                            
-                    </div>  
-                </div>
         </section>
     </section>
     <section class="footer" id="contact">
@@ -240,7 +238,6 @@
           }
           
           slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
         }
         </script>
 </body>

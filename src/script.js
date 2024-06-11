@@ -1,13 +1,28 @@
 import './style.css'
 import * as THREE from 'three'
-import * as dat from 'lil-gui'
 import gsap from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+
 const loadingScreen = document.getElementById('loadingScreen');
+const loadingDots = document.getElementById('loadingDots');
+
+let dotCount = 0;
+const maxDots = 3; // Maximum number of dots to show
+
+// Function to update the loading dots
+const updateLoadingDots = () => {
+    dotCount = (dotCount + 1) % (maxDots + 1);
+    loadingDots.innerHTML = '.'.repeat(dotCount);
+};
+
+// Update the dots every 500 milliseconds
+const dotInterval = setInterval(updateLoadingDots, 400);
+
 const loadingManager = new THREE.LoadingManager(
     // Called when all assets are loaded
     () => {
+        clearInterval(dotInterval); // Clear the interval when loading is complete
         gsap.to(loadingScreen, { opacity: 0, duration: 1, onComplete: () => {
             loadingScreen.style.display = 'none';
         }});
@@ -21,7 +36,6 @@ const loadingManager = new THREE.LoadingManager(
         console.error(`There was an error loading ${url}`);
     }
 );
-
 
 
 const artsLink = document.querySelector('.digital-arts-link');
@@ -211,6 +225,8 @@ window.addEventListener('resize', () =>
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
+    console.log(sizes.width) ////  hi chat gpt tolong bantu ketika widht ini mencapai nilai <500 kamera akan mundur
+
 
     // Update camera
     camera.aspect = sizes.width / sizes.height
@@ -231,7 +247,9 @@ scene.add(cameraGroup)
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
+// camera.position.z = 15 saat widht <500
 camera.position.z = 6
+
 cameraGroup.add(camera)
 
 /**
@@ -287,10 +305,126 @@ const cursor = {}
 cursor.x = 0
 cursor.y = 0
 
-window.addEventListener('mousemove', (auah =>{
-    cursor.x = auah.clientX / sizes.width - 0.5
-    cursor.y = auah.clientY / sizes.height - 0.5
-}))
+let isDragging = false;
+let isRotateCameraEnabled = false;
+let previousMousePosition = {
+    x: 0,
+    y: 0
+};
+
+const toRadians = (angle) => {
+    return angle * (Math.PI / 180);
+};
+
+const onMouseDown = (event) => {
+    if (isRotateCameraEnabled) {
+        isDragging = true;
+        previousMousePosition = {
+            x: event.clientX,
+            y: event.clientY
+        };
+    }
+};
+
+const onMouseMove = (event) => {
+    if (isDragging) {
+        const deltaMove = {
+            x: event.clientX - previousMousePosition.x,
+            y: event.clientY - previousMousePosition.y
+        };
+
+        const deltaRotationQuaternion = new THREE.Quaternion()
+            .setFromEuler(new THREE.Euler(
+                toRadians(deltaMove.y * 0),
+                toRadians(deltaMove.x * 0.2),
+                0,
+                'XYZ'
+            ));
+
+        camera.quaternion.multiplyQuaternions(deltaRotationQuaternion, camera.quaternion);
+
+        previousMousePosition = {
+            x: event.clientX,
+            y: event.clientY
+        };
+    } else {
+        if (!isRotateCameraEnabled) {
+            cursor.x = event.clientX / sizes.width - 0.5
+            cursor.y = event.clientY / sizes.height - 0.5
+        }
+    }
+};
+
+const onMouseUp = () => {
+    isDragging = false;
+};
+
+const onTouchStart = (event) => {
+    if (isRotateCameraEnabled && event.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        };
+    }
+};
+
+const onTouchMove = (event) => {
+    if (isDragging && event.touches.length === 1) {
+        const deltaMove = {
+            x: event.touches[0].clientX - previousMousePosition.x,
+            y: event.touches[0].clientY - previousMousePosition.y
+        };
+
+        const deltaRotationQuaternion = new THREE.Quaternion()
+            .setFromEuler(new THREE.Euler(
+                toRadians(deltaMove.y * 0),
+                toRadians(deltaMove.x * 0.2),
+                0,
+                'XYZ'
+            ));
+
+        camera.quaternion.multiplyQuaternions(deltaRotationQuaternion, camera.quaternion);
+
+        previousMousePosition = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        };
+    }
+};
+
+const onTouchEnd = () => {
+    isDragging = false;
+};
+
+window.addEventListener('mousedown', onMouseDown);
+window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('mouseup', onMouseUp);
+
+window.addEventListener('touchstart', onTouchStart);
+window.addEventListener('touchmove', onTouchMove);
+window.addEventListener('touchend', onTouchEnd);
+
+const rotateCameraButton = document.getElementById('rotateCameraButton');
+rotateCameraButton.addEventListener('click', () => {
+    isRotateCameraEnabled = !isRotateCameraEnabled;
+    rotateCameraButton.style.backgroundColor = isRotateCameraEnabled ? '#aed581' : '#82d0f1';
+    rotateCameraButton.textContent = isRotateCameraEnabled ? 'Disable Rotate' : 'Rotate Camera';
+});
+
+window.addEventListener('mousedown', onMouseDown);
+window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('mouseup', onMouseUp);
+
+window.addEventListener('touchstart', onTouchStart);
+window.addEventListener('touchmove', onTouchMove);
+window.addEventListener('touchend', onTouchEnd);
+
+
+
+
+
+
 
 const meshes = [group,mesh2]
 

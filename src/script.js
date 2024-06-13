@@ -72,7 +72,7 @@ artsLink.addEventListener('click', function (event) {
         skillsList.innerHTML = `
             <li>ExpressJs</li>
             <li>Flask</li>
-            <li>NextJS</li>
+            <li>Docker</li>
             <li>DataBase</li>
             <li>RestApi</li>
         `;
